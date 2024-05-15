@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test App</title>
+
+<style>
+.parent{
+display:flex;
+width:100vw;
+height:100vh;
+background:beige;
+justify-content:center;
+align-items:center;
+}
+
+.box{
+background:tomato;
+padding:50px;
+}
+
+button{
+margin: 20px 5px 5px 5px;
+padding: 5px;
+cursor:pointer;
+border:none;
+font-family:Arial;
+}
+
+button:hover{
+border: 1px solid black;
+}
+
+.buttons{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+
+#newNote{
+	padding:5px;
+	font-family: Arial;
+	font-size: 16px;
+}
+
+#notes{
+margin-top: 10px;
+}
+
+.note{
+	background: beige;
+	padding: 5px;
+	margin: 2px;
+	font-family:Arial;
+	border: 1px solid lightgray;
+}
+
+</style>
+</head>
+<body>
+<div class='parent'>
+	<div class="box">
+		<div>
+			<input type="text" id="newNote"/>
+			<div class="buttons">
+				<button onclick="addItem()">Add Item</button>
+				<button onclick="clearItems()">Clear</button>
+			</div>
+			<div id="notes">
+				
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script>
+const notesDiv = document.getElementById("notes");
+
+let notes = JSON.parse(localStorage.getItem("notes"));
+
+if (notes){
+	for (const note of notes){
+		const newDiv = document.createElement("div");
+		newDiv.classList = "note";
+		newDiv.innerHTML = note
+		notesDiv.appendChild(newDiv);
+	}	
+}else{
+	notes = []
+}
+
+
+function addItem(){
+	let note = document.getElementById("newNote");
+	if (note.value.trim() === ""){
+		return;
+	}
+	const newDiv = document.createElement("div");
+	newDiv.classList = "note";
+	newDiv.innerHTML = note.value
+	notesDiv.appendChild(newDiv);
+
+	notes = [...notes,note.value]
+	
+	localStorage.setItem("notes",JSON.stringify(notes));
+	note.value = ""
+}
+
+function clearItems(){
+	localStorage.removeItem("notes");
+	notesDiv.innerHTML = "";
+	notes = []
+}
+
+</script>
+</html>

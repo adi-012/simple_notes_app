@@ -58,13 +58,20 @@ margin-top: 10px;
 	font-size:10px;
 }
 
+.inputDiv{
+	display:flex;
+	justify-content:center;
+}
+
 </style>
 </head>
 <body>
 <div class='parent'>
 	<div class="box">
 		<div>
-			<input type="text" id="newNote"/>
+			<div class="inputDiv">
+				<input type="text" id="newNote"/>
+			</div>
 			<div class="buttons">
 				<button onclick="addItem()">Add Item</button>
 				<button onclick="clearItems()">Clear</button>

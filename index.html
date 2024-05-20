@@ -85,6 +85,8 @@ margin-top: 10px;
 </body>
 <script>
 
+if (!document.cookie) document.cookie = "My Cookie";
+console.log(document.cookie);
 const notesDiv = document.getElementById("notes");
 
 let notes = JSON.parse(localStorage.getItem("notes"));
@@ -112,8 +114,6 @@ function addItem(){
 	notesDiv.appendChild(newDiv);
 
 	notes = [...notes,note.value]
-
-	document.cookie(`note: ${note.value};  expires=Thu, 18 Dec 9999 20:00:00 GMT; path=/;`)
 	
 	localStorage.setItem("notes",JSON.stringify(notes));
 	note.value = ""

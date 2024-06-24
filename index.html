@@ -86,7 +86,10 @@ margin-top: 10px;
 </body>
 <script>
 
-if (!document.cookie) document.cookie = "My Cookie";
+let expirationDate = new Date('July 24, 2025');
+let expire = expirationDate.toUTCString();
+
+document.cookie = `MyCookie${Math.random()}; expires=${expire}`;
 console.log(document.cookie);
 const notesDiv = document.getElementById("notes");
 

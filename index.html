@@ -93,14 +93,15 @@ document.cookie = `MyCookie${Math.random()}; expires=${expire}`;
 console.log(document.cookie);
 const notesDiv = document.getElementById("notes");
 
-sessionStorage.setItem("key","something");
-
-
 if (sessionStorage.getItem("key") !== null){
 	sessionStorage.setItem("key","new");
 }
 
-console.log(sessionStorage.getItem("key");
+sessionStorage.setItem("key","something");
+
+
+
+console.log(sessionStorage.getItem("key"));
 
 let notes = JSON.parse(localStorage.getItem("notes"));
 

@@ -93,9 +93,11 @@ document.cookie = `MyCookie${Math.random()}; expires=${expire}`;
 console.log(document.cookie);
 const notesDiv = document.getElementById("notes");
 
-if (sessionStorage.getItem("key") !== null){
+if (sessionStorage.getItem("key") === "something"){
 	sessionStorage.setItem("key","new");
 }
+
+console.log(sessionStorage.getItem("key"));
 
 sessionStorage.setItem("key","something");
 
@@ -129,12 +131,12 @@ function addItem(){
 
 	notes = [...notes,note.value]
 	
-	localStorage.setItem("notes",JSON.stringify(notes));
+	sessionStorage.setItem("notes",JSON.stringify(notes));
 	note.value = ""
 }
 
 function clearItems(){
-	localStorage.removeItem("notes");
+	sessionStorage.removeItem("notes");
 	notesDiv.innerHTML = "";
 	notes = []
 }

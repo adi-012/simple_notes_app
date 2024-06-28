@@ -86,24 +86,7 @@ margin-top: 10px;
 </body>
 <script>
 
-let expirationDate = new Date('July 24, 2025');
-let expire = expirationDate.toUTCString();
-
-document.cookie = `MyCookie${Math.random()}; expires=${expire}`;
-console.log(document.cookie);
 const notesDiv = document.getElementById("notes");
-
-if (sessionStorage.getItem("key") === "something"){
-	sessionStorage.setItem("key","new");
-}
-
-console.log(sessionStorage.getItem("key"));
-
-sessionStorage.setItem("key","something");
-
-
-
-console.log(sessionStorage.getItem("key"));
 
 let notes = JSON.parse(localStorage.getItem("notes"));
 
@@ -131,12 +114,12 @@ function addItem(){
 
 	notes = [...notes,note.value]
 	
-	sessionStorage.setItem("notes",JSON.stringify(notes));
+	localStorage.setItem("notes",JSON.stringify(notes));
 	note.value = ""
 }
 
 function clearItems(){
-	sessionStorage.removeItem("notes");
+	localStorage.removeItem("notes");
 	notesDiv.innerHTML = "";
 	notes = []
 }
